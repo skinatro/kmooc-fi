@@ -16,3 +16,6 @@ spec:
         - name: todo-app
           image: skinatro/todo-app:latest
           imagePullPolicy: IfNotPresent
+          env:
+            - name: PORT
+              value: "9001"
