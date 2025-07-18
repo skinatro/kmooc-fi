@@ -16,3 +16,6 @@ spec:
         - name: log-output
           image: skinatro/log_output:latest
           imagePullPolicy: IfNotPresent
+          env:
+            - name: PORT 
+              value: "5001"
