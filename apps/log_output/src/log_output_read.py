@@ -12,11 +12,14 @@ def index():
     """
     Read the logs created by the generator and serve it on endpoin /
     """
+    file_path_logs = "/tmp/kube/logs.txt"
+    file_path_pongs = "/tmp/kube/pongs.txt"
     
-    file_path = "/usr/src/app/files/logs.txt"
-    
-    with open(file_path,'r') as file:
-        return f"{file.read()}"
+    with open(file_path_logs,'r') as logs:
+        logs_content = logs.read()
+    with open(file_path_pongs,'r') as pongs:
+        pongs_content = pongs.read()
+    return f"{logs_content} {pongs_content}"
 
 if __name__ == "__main__":
     port = os.environ.get("PORT","5000")

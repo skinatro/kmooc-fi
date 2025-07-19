@@ -14,7 +14,8 @@ spec:
     spec:
       volumes:
         - name: shared-logs
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: logs-pong-claim
       containers:
         - name: log-output-read
           image: skinatro/log-output-read:latest
@@ -23,9 +24,9 @@ spec:
               value: "5000"
           volumeMounts:
             - name: shared-logs
-              mountPath: /usr/src/app/files
+              mountPath: /tmp/kube
         - name: log-output-gen
           image: skinatro/log-output-gen:latest
           volumeMounts:
             - name: shared-logs
-              mountPath: /usr/src/app/files
+              mountPath: /tmp/kube

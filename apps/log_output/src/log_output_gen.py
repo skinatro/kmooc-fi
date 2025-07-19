@@ -9,7 +9,7 @@ def generate_random_log():
     """
     Generate a random string and print it to stdout and to a file 
     """
-    file_path = "/usr/src/app/files/logs.txt"
+    file_path = "/tmp/kube/logs.txt"
 
     while True:
         rstr = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits)

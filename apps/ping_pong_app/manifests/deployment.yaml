@@ -12,10 +12,17 @@ spec:
       labels:
         app: ping-pong-app
     spec:
+      volumes:
+      - name: shared-logs
+        persistentVolumeClaim:
+          claimName: logs-pong-claim
       containers:
         - name: ping-pong-app
           image: skinatro/ping-pong-app:latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: PORT
               value: "5000"
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /tmp/kube
