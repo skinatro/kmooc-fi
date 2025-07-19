@@ -10,6 +10,6 @@ def hello_world():
     return "<p>Hello, World!</p>"
 
 if __name__ == "__main__":
-    port = os.environ.get("PORT", "9001")
+    port = os.environ.get("PORT", "5000")
     print(f"Server started on port: {port}")
     app.run(host="0.0.0.0", port=int(port), debug=False)
