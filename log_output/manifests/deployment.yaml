@@ -12,10 +12,20 @@ spec:
       labels:
         app: log-output
     spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
       containers:
-        - name: log-output
-          image: skinatro/log_output:latest
-          imagePullPolicy: IfNotPresent
+        - name: log-output-read
+          image: skinatro/log-output-read:latest
           env:
             - name: PORT 
               value: "5000"
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+        - name: log-output-gen
+          image: skinatro/log-output-gen:latest
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
