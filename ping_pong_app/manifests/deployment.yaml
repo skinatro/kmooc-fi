@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-app-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-pong-app
+  template:
+    metadata:
+      labels:
+        app: ping-pong-app
+    spec:
+      containers:
+        - name: ping-pong-app
+          image: skinatro/ping-pong-app:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PORT
+              value: "5000"

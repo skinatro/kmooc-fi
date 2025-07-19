@@ -10,4 +10,4 @@ ENV PORT=5000
 
 EXPOSE 5000
 
-CMD ["python","-u","./webserver.py"]
+CMD ["python","-u","./pong.py"]

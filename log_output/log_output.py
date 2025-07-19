@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html',hash_string=HASH_STRING)
+    return f"{HASH_STRING}"
 
 if __name__ == "__main__":
     threading.Thread(target=generate_random_log, daemon=True).start()
