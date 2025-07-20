@@ -12,3 +12,4 @@
 - [1.9](https://github.com/skinatro/kmooc-fi/tree/1.9/ping_pong_app)
 - [1.10](https://github.com/skinatro/kmooc-fi/tree/1.10/log_output)
 - [1.11](https://github.com/skinatro/kmooc-fi/tree/1.11/apps)
+- [1.12](https://github.com/skinatro/kmooc-fi/tree/1.11/todo_app)

@@ -12,10 +12,18 @@ spec:
       labels:
         app: todo-app
     spec:
+      volumes:
+        - name: shared-image
+          persistentVolumeClaim:
+            claimName: todo-app-claim
       containers:
         - name: todo-app
           image: skinatro/todo-app:latest
-          imagePullPolicy: IfNotPresent
           env:
             - name: PORT
               value: "5000"
+            - name: TIMEOUT
+              value: "600"
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/static

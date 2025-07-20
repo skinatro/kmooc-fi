@@ -19,7 +19,6 @@ spec:
       containers:
         - name: ping-pong-app
           image: skinatro/ping-pong-app:latest
-          imagePullPolicy: Always
           env:
             - name: PORT
               value: "5000"
