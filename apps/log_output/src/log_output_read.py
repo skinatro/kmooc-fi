@@ -2,6 +2,7 @@
 
 import logging
 import os
+import requests
 from flask import Flask
 
 logging.getLogger('werkzeug').setLevel(logging.ERROR)
@@ -13,13 +14,15 @@ def index():
     Read the logs created by the generator and serve it on endpoin /
     """
     file_path_logs = "/tmp/kube/logs.txt"
-    file_path_pongs = "/tmp/kube/pongs.txt"
+    #file_path_pongs = "/tmp/kube/pongs.txt"
     
     with open(file_path_logs,'r') as logs:
         logs_content = logs.read()
-    with open(file_path_pongs,'r') as pongs:
-        pongs_content = pongs.read()
-    return f"{logs_content} {pongs_content}"
+    # with open(file_path_pongs,'r') as pongs:
+    #     pongs_content = pongs.read()
+    with requests.get(url="http://ping-pong-app-svc:5000/pings", timeout=3) as response:
+        pongs_content = response.text
+    return f"{logs_content} <br> Ping / Pongs: {pongs_content}"
 
 if __name__ == "__main__":
     port = os.environ.get("PORT","5000")

@@ -14,8 +14,9 @@ spec:
     spec:
       volumes:
         - name: shared-logs
-          persistentVolumeClaim:
-            claimName: logs-pong-claim
+          emptyDir : {}
+          #persistentVolumeClaim:
+            #claimName: logs-pong-claim
       containers:
         - name: log-output-read
           image: skinatro/log-output-read:latest

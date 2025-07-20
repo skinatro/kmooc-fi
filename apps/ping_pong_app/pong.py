@@ -19,14 +19,21 @@ class Counter:
         """
         Method to increment the number of visits to the site and save to file
         """
-        file_path = "/tmp/kube/pongs.txt"
+        # file_path = "/tmp/kube/pongs.txt"
         self.value += 1
 
-        with open(file_path, 'w') as file:
-            file.write("ping pongs "+str(self.value) + '\n')
+        # with open(file_path, 'w') as file:
+        #     file.write("ping pongs "+str(self.value) + '\n')
         return self.value
 
 counter = Counter()
+
+@app.route("/pings")
+def ping():
+    """
+    Shows the number of pings
+    """
+    return str(counter.increment())
 
 @app.route('/pingpong')
 def pong():
@@ -34,7 +41,7 @@ def pong():
     Call the increment function to increment and log to file upon GET request
     """
     if request.method == 'GET':
-        return f"pong {counter.increment()}"
+        return f"Ping / Pong: {counter.increment()}"
 
 if __name__ == '__main__':
     PORT = os.environ.get("PORT", "5000")

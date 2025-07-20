@@ -32,7 +32,6 @@ def download_new():
     """
     return time.time() - start_time > timeout
 
-
 @app.route("/")
 def index():
     """
