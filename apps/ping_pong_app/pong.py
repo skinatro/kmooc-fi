@@ -2,10 +2,8 @@
 Count the number of the GET requests to the app and store it a file
 """
 import os
-import logging
 from flask import Flask, request
 
-logging.getLogger('werkzeug').setLevel(logging.ERROR)
 app = Flask(__name__)
 
 class Counter:

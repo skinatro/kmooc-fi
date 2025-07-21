@@ -1,7 +1,6 @@
 """
 A simple to do list app
 """
-import logging
 import os
 import time
 import urllib.request
@@ -36,7 +35,7 @@ def index():
     """
     Serve the webpage
     """
-    response = requests.get(url="http://todo-app-backend-svc:5000/todos", timeout=3)
+    response = requests.get(url="http://todo-app-backend-svc:5555/todos", timeout=3)
     try:
         task_list = response.json()
     except Exception as e:
@@ -49,6 +48,6 @@ def index():
 
 
 if __name__ == "__main__":
-    port = os.environ.get("PORT", "5000")
+    port = os.environ.get("PORT", "5555")
     print(f"Server started on port: {port}")
     app.run(host="0.0.0.0", port=int(port), debug=False)

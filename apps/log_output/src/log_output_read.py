@@ -1,11 +1,9 @@
 """Read Log from a file and server it"""
 
-import logging
 import os
 import requests
 from flask import Flask
 
-logging.getLogger('werkzeug').setLevel(logging.ERROR)
 app = Flask(__name__)
 
 @app.route('/')
