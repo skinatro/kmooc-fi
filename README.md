@@ -16,3 +16,5 @@
 - [1.13](https://github.com/skinatro/kmooc-fi/tree/1.13/todo_app)
 - [2.1](https://github.com/skinatro/kmooc-fi/tree/2.1/apps)
 - [2.2](https://github.com/skinatro/kmooc-fi/tree/2.2/todo_app)
+- [2.3](https://github.com/skinatro/kmooc-fi/tree/2.3/apps)
+- [2.4](https://github.com/skinatro/kmooc-fi/tree/2.4/todo_app) 
