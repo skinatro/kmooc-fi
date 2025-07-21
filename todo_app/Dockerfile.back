@@ -8,8 +8,8 @@ ENV TIMEOUT=3600
 
 EXPOSE 5000
 
-COPY . .
+COPY ./src .
 
 RUN pip install -r requirements.txt
 
-CMD ["python","-u","./webserver.py"]
+CMD ["python","-u","./todo-back.py"]

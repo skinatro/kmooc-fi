@@ -5,9 +5,8 @@ import logging
 import os
 import time
 import urllib.request
+import requests
 from flask import Flask, render_template
-
-logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 app = Flask(__name__)
 
@@ -16,7 +15,7 @@ start_time = 0
 timeout = int(os.environ.get("TIMEOUT", "600"))  # 10 min default
 
 
-def download_file():
+def download_image():
     """
     Download file from the source
     """
@@ -37,9 +36,16 @@ def index():
     """
     Serve the webpage
     """
+    response = requests.get(url="http://todo-app-backend-svc:5000/todos", timeout=3)
+    try:
+        task_list = response.json()
+    except Exception as e:
+        print("Failed to parse JSON from backend:", e)
+        task_list = []
+
     if download_new():
-        download_file()
-    return render_template("index.html")
+        download_image()
+    return render_template("index.html",task_list=task_list)
 
 
 if __name__ == "__main__":

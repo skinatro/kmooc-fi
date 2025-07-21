@@ -1,0 +1,1 @@
+kubectl apply -f apps/log_output/manifests/deployment.yaml
