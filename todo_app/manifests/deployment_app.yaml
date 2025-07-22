@@ -24,7 +24,7 @@ spec:
             - name: PORT
               value: "5555"
             - name: TIMEOUT
-              value: "600"
+              value: "3600"
           volumeMounts:
             - name: shared-image
               mountPath: /usr/src/app/static

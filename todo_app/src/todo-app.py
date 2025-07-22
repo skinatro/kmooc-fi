@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 file_name = "/usr/src/app/static/image.jpg"
 start_time = 0
-timeout = int(os.environ.get("TIMEOUT", "600"))  # 10 min default
+timeout = int(os.environ.get("TIMEOUT"))
 
 
 def download_image():
@@ -48,6 +48,6 @@ def index():
 
 
 if __name__ == "__main__":
-    port = os.environ.get("PORT", "5555")
+    port = os.environ.get("PORT")
     print(f"Server started on port: {port}")
     app.run(host="0.0.0.0", port=int(port), debug=False)

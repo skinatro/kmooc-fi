@@ -1,4 +1,4 @@
-""" 
+"""
 Backend for the ToDo app
 """
 import os
@@ -24,5 +24,5 @@ def todos():
         return redirect("/")
  
 if __name__ == '__main__':
-    PORT = os.environ.get("PORT","5555")
+    PORT = os.environ.get("PORT")
     app.run(host="0.0.0.0",port=int(PORT), debug=False)

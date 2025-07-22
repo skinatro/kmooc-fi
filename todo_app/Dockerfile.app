@@ -2,12 +2,6 @@ FROM python:3-slim
 
 WORKDIR /usr/src/app
 
-ENV PORT=5000
-
-ENV TIMEOUT=3600
-
-EXPOSE 5555
-
 COPY ./src .
 
 RUN pip install -r requirements.txt
