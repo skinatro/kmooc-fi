@@ -5,6 +5,7 @@ import random
 import string
 import time
 
+
 def generate_random_log():
     """
     Generate a random string and print it to stdout and to a file 

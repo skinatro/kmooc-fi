@@ -1,33 +1,29 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: ping-pong-app-depl
+  name: postgres-stset
   namespace: exercises
 spec:
+  serviceName: postgres-svc
   replicas: 1
   selector:
     matchLabels:
-      app: ping-pong-app
+      app: postgres
   template:
     metadata:
       labels:
-        app: ping-pong-app
+        app: postgres
     spec:
-      # volumes:
-      # - name: shared-logs
-      #   persistentVolumeClaim:
-      #     claimName: logs-pong-claim
       containers:
-        - name: ping-pong-app
-          image: skinatro/ping-pong-app:latest
+        - name: postgres
+          image: postgres:bullseye
+          ports:
+           - name: db-port
+             containerPort: 5432
+          volumeMounts:
+            - name: postgres-data-storage
+              mountPath: /data
           env:
-            - name: DB_HOST
-              value: postgres-svc
-            - name: PORT
-              value: "5000"
-          # volumeMounts:
-          #   - name: shared-logs
-              # mountPath: /tmp/kube
             - name: POSTGRES_PASSWORD
               valueFrom: 
                 secretKeyRef:
@@ -43,3 +39,13 @@ spec:
                 configMapKeyRef:
                   key: postgres_db
                   name: postgres-confmap
+
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 100Mi
