@@ -1,6 +1,8 @@
 # Kubernates Solutions
 Dont Keep your decryption key in your repo like me
+
 I Keep it here in case i need to revisit this repo in the future
+
 ~~Totally not because i am too lazy to manage secrets~~
 ## Exercise
 ### Chapter 2
