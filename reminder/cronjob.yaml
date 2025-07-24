@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: reminder
+spec:
+  schedule: "42 * * * *"
+  timeZone: "Asia/Kolkata"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers: 
+          - name: reminder
+            image: centos:7
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - >
+              set -e;
+              url=$(curl -I -L --max-redirs 0 https://en.wikipedia.org/wiki/Special:Random | grep -i 'location' | awk '{print $2}' | tr -d '\r');
+              echo "Random wiki URL is: $url"
+          restartPolicy: OnFailure
