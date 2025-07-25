@@ -29,3 +29,4 @@ I Keep it here in case i need to revisit this repo in the future
 - [2.8](https://github.com/skinatro/kmooc-fi/tree/2.8/todo_app)
 - [2.9](https://github.com/skinatro/kmooc-fi/tree/2.9/reminder)
 - [2.10](https://github.com/skinatro/kmooc-fi/tree/2.10/todo_app)
+- [3.1](https://github.com/skinatro/kmooc-fi/tree/3.1/apps)
