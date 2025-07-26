@@ -25,7 +25,7 @@ def index():
     # with open(file_path_pongs,'r') as pongs:
     #     pongs_content = pongs.read()
     
-    with requests.get(url="http://ping-pong-app-svc:5000/pings", timeout=3) as response:
+    with requests.get(url="http://ping-pong-app-svc/pings", timeout=3) as response:
         pongs_content = response.text
         
     return f"file content: {confmapfile_content} <br> env variable: MESSAGE={envvar_content} <br> {logs_content} <br> Ping / Pongs: {pongs_content}"
