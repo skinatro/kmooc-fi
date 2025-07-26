@@ -61,20 +61,13 @@ def ping():
     """
     return str(counter.increment())
 
-@app.route('/pingpong')
+@app.route('/')
 def pong():
     """
     Call the increment function to increment and log to file upon GET request
     """
     if request.method == 'GET':
         return f"Ping / Pong: {counter.increment()}"
-
-@app.route('/')
-def all_okay():
-    """
-    Return all okay at root endpoint to help with ingress
-    """
-    return make_response("All Okay",200)
 
 if __name__ == '__main__':
     PORT = os.environ.get("PORT")
