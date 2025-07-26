@@ -2,7 +2,7 @@
 Count the number of the GET requests to the app and store it a file
 """
 import os
-from flask import Flask, request
+from flask import Flask, request, make_response
 import psycopg2
 
 app = Flask(__name__)
@@ -68,6 +68,13 @@ def pong():
     """
     if request.method == 'GET':
         return f"Ping / Pong: {counter.increment()}"
+
+@app.route('/')
+def all_okay():
+    """
+    Return all okay at root endpoint to help with ingress
+    """
+    return make_response("All Okay",200)
 
 if __name__ == '__main__':
     PORT = os.environ.get("PORT")

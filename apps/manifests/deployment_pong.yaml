@@ -13,33 +13,28 @@ spec:
       labels:
         app: ping-pong-app
     spec:
-      # volumes:
-      # - name: shared-logs
-      #   persistentVolumeClaim:
-      #     claimName: logs-pong-claim
       containers:
-        - name: ping-pong-app
-          image: skinatro/ping-pong-app:latest
-          env:
-            - name: DB_HOST
-              value: postgres-svc
-            - name: PORT
-              value: "5000"
-          # volumeMounts:
-          #   - name: shared-logs
-              # mountPath: /tmp/kube
-            - name: POSTGRES_PASSWORD
-              valueFrom: 
-                secretKeyRef:
-                  key: postgres_password
-                  name: postgres-secret
-            - name: POSTGRES_USER
-              valueFrom:
-                configMapKeyRef:
-                  key: postgres_user
-                  name: postgres-confmap
-            - name: POSTGRES_DB
-              valueFrom:
-                configMapKeyRef:
-                  key: postgres_db
-                  name: postgres-confmap
+      - name: ping-pong-app
+        image: skinatro/ping-pong-app:latest
+        ports:
+          - containerPort: 5000
+        env:
+          - name: DB_HOST
+            value: "postgres-svc"
+          - name: PORT
+            value: "5000"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgres_password
+          - name: POSTGRES_USER
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-confmap
+                key: postgres_user
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: postgres-confmap
+                key: postgres_db
