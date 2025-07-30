@@ -35,3 +35,5 @@ I Keep it here in case i need to revisit this repo in the future
 - [3.4](https://github.com/skinatro/kmooc-fi/tree/3.4/apps)
 - [3.5](https://github.com/skinatro/kmooc-fi/tree/3.5/todo_app)
 - [3.6](https://github.com/skinatro/kmooc-fi/tree/3.6/project)
+- [3.7](https://github.com/skinatro/kmooc-fi/tree/3.7/project)
+- [3.8](https://github.com/skinatro/kmooc-fi/tree/3.8/project)
