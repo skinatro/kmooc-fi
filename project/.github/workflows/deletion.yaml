@@ -40,7 +40,7 @@ jobs:
 
       - name: Delete
         run: |-
-          NAMESPACE=$(echo "${GITHUB_REF#refs/heads/}" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+          NAMESPACE=$(echo "$BRANCH" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
           if [[ "$NAMESPACE" == "master" ]]; then
             NAMESPACE="project"
           fi
