@@ -24,6 +24,13 @@ spec:
               value: "5555"
             - name: TIMEOUT
               value: "3600"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           volumeMounts:
             - name: shared-image
               mountPath: /usr/src/app/static
