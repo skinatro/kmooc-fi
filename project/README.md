@@ -25,3 +25,7 @@ Database -> **MongoDB**
 | Data Residency       | Can choose regions, fixed to provider’s offerings | Total freedom – deploy in any region/datacenter |
 | Ecosystem Features   | One-click tools: charts, full-text search, etc.   | Must install/integrate third-party tools        |
 | SLA/Uptime           | Uptime guaranteed (e.g., 99.99%)                  | Your team must ensure reliability yourself      |
+
+# GKE Logs
+
+![GKE Logs](./logs.png)

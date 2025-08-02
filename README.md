@@ -40,3 +40,4 @@ I Keep it here in case i need to revisit this repo in the future
 - [3.9](https://github.com/skinatro/kmooc-fi/tree/3.9/project)
 - [3.10](https://github.com/skinatro/kmooc-fi/tree/3.10/project/mongodb-backup)
 - [3.11](https://github.com/skinatro/kmooc-fi/tree/3.11/project)
+- [3.12](https://github.com/skinatro/kmooc-fi/tree/3.12/project)
