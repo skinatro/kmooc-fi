@@ -17,6 +17,20 @@ spec:
       containers:
         - name: todo-app-backend
           image: PROJECT/IMAGE_BE
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 5555               
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5555
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
           resources:
             requests:
               memory: "128Mi"
