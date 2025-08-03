@@ -69,6 +69,22 @@ def pong():
     if request.method == 'GET':
         return f"Ping / Pong: {counter.increment()}"
 
+@app.route('/healthz')
+def healthz():
+    """
+    Health check endpoint.
+    Returns 200 OK if the app and DB connection are healthy.
+    """
+    try:
+        with counter.conn.cursor() as cur:
+            cur.execute("SELECT 1;")    
+            _ = cur.fetchone()
+        return "OK", 200
+    except Exception as e:
+        app.logger.error(f"Health check failed: {e}")
+        return "Database connection error", 500
+
+
 if __name__ == '__main__':
     PORT = os.environ.get("PORT")
     app.run(host="0.0.0.0", port=int(PORT), debug=True)

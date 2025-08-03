@@ -16,6 +16,13 @@ spec:
       containers:
       - name: ping-pong-app
         image: skinatro/ping-pong-app:latest
+        imagePullPolicy: Always
+        readinessProbe:
+          initialDelaySeconds: 15 # Initial delay until the readiness is tested
+          periodSeconds: 15 # How often to test
+          httpGet:
+            path: /healthz
+            port: 5000
         ports:
           - containerPort: 5000
         env:
