@@ -44,3 +44,5 @@ I Keep it here in case i need to revisit this repo in the future
 - [4.1](https://github.com/skinatro/kmooc-fi/tree/4.1/exercises)
 - [4.2](https://github.com/skinatro/kmooc-fi/tree/4.2/project)
 - [4.3](https://github.com/skinatro/kmooc-fi/tree/4.3/misc)
+- [4.4](https://github.com/skinatro/kmooc-fi/tree/4.4/project)
+- [4.5](https://github.com/skinatro/kmooc-fi/tree/4.5/project)
