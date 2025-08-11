@@ -1,4 +1,5 @@
 https://github.com/skinatro/kmoocfi-project
+https://github.com/skinatro/kmoocfi-project-config
 
 
 # DBaaS vs DIY
