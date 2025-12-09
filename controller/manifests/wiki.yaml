@@ -1,0 +1,7 @@
+apiVersion: stable.dwk/v1
+kind: DummySite
+metadata:
+  name: wiki-cloner
+  namespace: controller
+spec:
+  website_url: https://en.wikipedia.org/wiki/Kubernetes

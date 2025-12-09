@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummysites-controller-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dummysites-controller
+  template:
+    metadata:
+      labels:
+        app: dummysites-controller
+    spec:
+      serviceAccountName: dummysites-controller-account
+      containers:
+        - name: dummysites-controller
+          image: skinatro/crd-controller:latest
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dummysites-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: dummysites-controller
+  ports:
+    - name: client
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dummysites-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dummysites-svc
+                port:
+                  number: 8080
