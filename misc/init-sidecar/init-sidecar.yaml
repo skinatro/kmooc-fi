@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: si-pod
+  namespace: si
+  labels:
+    app: si-pod
+spec:
+  volumes:
+    - name: si-vol
+      emptyDir:
+        medium: Memory
+
+  initContainers:
+    - name: init-si
+      image: curlimages/curl:latest
+      volumeMounts:
+        - name: si-vol
+          mountPath: /usr/share/nginx/html
+      command: ["sh", "-c"]
+      args:
+        - curl "https://en.wikipedia.org/wiki/Kubernetes" -o /usr/share/nginx/html/index.html
+
+  containers:
+    - name: nginx
+      image: nginx:stable
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: si-vol
+          mountPath: /usr/share/nginx/html
+
+    - name: sidecar-si
+      image: curlimages/curl:latest
+      volumeMounts:
+        - name: si-vol
+          mountPath: /usr/share/nginx/html
+      command: ["sh", "-c"]
+      args:
+        - |
+          while true; do
+            sleep "$(shuf -i 300-900 -n 1)"
+            curl -L "https://en.wikipedia.org/wiki/Special:Random" \
+              -o /usr/share/nginx/html/index.html
+          done
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: si-svc
+  namespace: si
+spec:
+  selector:
+    app: si-pod 
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
