@@ -15,29 +15,37 @@ def index():
     try:
         with open(file_path_confmap, 'r') as confmap:
             confmapfile_content = confmap.read()
-    except Exception as e:
-        confmapfile_content = f"Error reading config map file: {e}"
+    except Exception as e_cf:
+        confmapfile_content = f"Error reading config map file: {e_cf}"
 
     envvar_content = os.environ.get("MESSAGE", "Not Set")
 
     try:
         with open(file_path_logs, 'r') as logs:
             logs_content = logs.read()
-    except Exception as e:
-        logs_content = f"Error reading logs file: {e}"
+    except Exception as e_file:
+        logs_content = f"Error reading logs file: {e_file}"
 
     try:
         response = requests.get(url="http://ping-pong-app-svc/pings", timeout=3)
         response.raise_for_status()
         pongs_content = response.text
-    except requests.RequestException as e:
-        pongs_content = f"Error fetching ping-pong count: {e}"
+    except requests.RequestException as e_pingpong:
+        pongs_content = f"Error fetching ping-pong count: {e_pingpong}"
+        
+    try:
+        response = requests.get(url="http://greeter-svc/", timeout=3)
+        response.raise_for_status()
+        greet_content = response.text
+    except requests.RequestException as e_greet:
+        greet_content = f"Error fetching greet: {e_greet}"
 
     return (
         f"File content: {confmapfile_content} <br>"
         f"Env variable: MESSAGE={envvar_content} <br>"
         f"{logs_content} <br>"
-        f"Ping / Pongs: {pongs_content}"
+        f"Ping / Pongs: {pongs_content} <br>"
+        f"{greet_content}"
     )
 
 

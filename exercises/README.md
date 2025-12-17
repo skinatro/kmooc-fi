@@ -1,3 +1,22 @@
+![kiali final output](./final-kiali.png)
+
+
+
+
+## exc 5.3
+
+- the greeter-v* files are deployment and service for the 2 seperate versions of greeters
+- virtualservice.yaml will route the traffice from greeter-service to the individual nodes
+- greeter-frontdoor creates the greeter-service domain
+
+
+The *-gcp files are gcp related gateway and httproutes
+
+*-k3s files are the config for running only 1 version of greeter
+
+## Older content
+
+
 https://github.com/skinatro/kmoocfi-exercises
 
 
