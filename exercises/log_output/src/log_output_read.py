@@ -27,14 +27,14 @@ def index():
         logs_content = f"Error reading logs file: {e_file}"
 
     try:
-        response = requests.get(url="http://ping-pong-app-svc/pings", timeout=3)
+        response = requests.get(url="http://ppa-knative.exercises.svc/pings", timeout=3)
         response.raise_for_status()
         pongs_content = response.text
     except requests.RequestException as e_pingpong:
         pongs_content = f"Error fetching ping-pong count: {e_pingpong}"
         
     try:
-        response = requests.get(url="http://greeter-svc/", timeout=3)
+        response = requests.get(url="http://greeter.exercises.svc", timeout=3)
         response.raise_for_status()
         greet_content = response.text
     except requests.RequestException as e_greet:

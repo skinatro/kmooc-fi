@@ -1,0 +1,45 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: log-output
+  namespace: exercises
+spec:
+  template:
+    spec:
+      containers:
+        - name: log-output-read
+          image: skinatro/log-output-read
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: exercises-confmap
+                  key: message
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /tmp/kube
+            - name: confmap-vol
+              mountPath: /etc/config
+
+        - name: log-output-gen
+          image: skinatro/log-output-gen
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /tmp/kube
+
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
+        - name: confmap-vol
+          configMap:
+            name: exercises-confmap
+            items:
+              - key: message
+                path: information.txt

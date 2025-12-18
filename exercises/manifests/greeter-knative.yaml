@@ -1,0 +1,25 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: greeter
+  namespace: exercises
+spec:
+  template:
+    metadata:
+    spec:
+      containers:
+      - image: skinatro/greeter 
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080 
+        env:
+          - name: VERNO
+            value: "2"
+          - name: GREET
+            value: "Bonjour"
+  traffic:
+    - percent: 100
+      latestRevision: true

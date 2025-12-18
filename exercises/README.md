@@ -1,9 +1,14 @@
-![kiali final output](./final-kiali.png)
+## exc 5.7
 
+Patched knative to enable multi container clusters as it does not support sidecars
 
+also patched it to enable fsgroup support to help with shared volume
 
+![everything works as serverless](./serverless_final.png)
 
 ## exc 5.3
+
+![kiali final output](./final-kiali.png)
 
 - the greeter-v* files are deployment and service for the 2 seperate versions of greeters
 - virtualservice.yaml will route the traffice from greeter-service to the individual nodes
